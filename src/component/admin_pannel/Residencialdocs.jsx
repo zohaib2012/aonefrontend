@@ -5,12 +5,9 @@ import { useGetallresidencialdocsQuery } from '../../redux/residenceapi';
 // import { useGetallresidencialdocsQuery } from '../../redux/residenceapi';
 
 export const Residencialdocs = () => {
-    const { data, error, isLoading, isError } =useGetallresidencialdocsQuery();
-      const [selectedImage, setSelectedImage] = useState(0);
+    const { data, error, isLoading, isError } = useGetallresidencialdocsQuery();
+    const [selectedImage, setSelectedImage] = useState(0);
 
-    console.log("one");
-    console.log(data);
-    
     if (isLoading) {
         return (
             <div className="flex justify-center items-center h-screen bg-[#23282B]">
@@ -32,15 +29,15 @@ export const Residencialdocs = () => {
     const accounts = data?.data?.map(account => ({
         user: account.user,
         residencedocument: account.residencedocument,
-    createdAt: account.createdAt,
+        createdAt: account.createdAt,
     })) || [];
 
     return (
         <div className="bg-[#23282B] min-h-screen py-8 px-4">
             <div className="max-w-6xl mx-auto text-white font-sans">
-        
-                <h1 className='bg-gray-700 border-1 p-2 border-gray-950 my-2 h-14 text-center font-semibold text-3xl text-white'>Residencial documents</h1>
-                
+            <h1 className='bg-gray-700 p-2 my-10 border border-gray-950  text-center font-semibold text-white text-xl sm:text-2xl md:text-3xl h-auto sm:h-14 flex items-center justify-center'>
+                    Residencial documents
+                </h1>
                 <div className="overflow-x-auto">
                     <table className="w-full text-left">
                         <thead className="bg-[#2C3235] border-2 border-gray-600 text-gray-400 text-sm">
@@ -57,19 +54,19 @@ export const Residencialdocs = () => {
                                     <td className="p-3">{account.user}</td>
                                     <td className="p-3 text-xl font-normal">
 
-                                    <div className="mb-4 border rounded-lg overflow-hidden">
-     
-        <img
-        src={account.residencedocument}
-        alt={`residencedocument ${selectedImage}`}
-        className='w-96 h-fit object-contain'
-        />
-      </div>
+                                        <div className="mb-4 border w-60 rounded-lg overflow-hidden">
+
+                                            <img
+                                                src={account.residencedocument}
+                                                alt={`residencedocument ${selectedImage}`}
+                                                className='w-96 h-fit object-contain'
+                                            />
+                                        </div>
 
 
                                     </td>
                                     <td className="p-3">{account.createdAt}</td>
-                                    
+
                                     <td className="p-3">
                                         <div className="flex space-x-2">
                                             <button className="bg-gray-800 text-[#00B894] px-3 py-1 rounded text-sm">

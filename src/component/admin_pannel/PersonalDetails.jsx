@@ -6,9 +6,6 @@ import { useDisplaydetailsQuery } from '../../redux/p.detailapi';
 export const PersonalDetails = () => {
     const { data, error, isLoading, isError } = useDisplaydetailsQuery();
     
-    console.log("one");
-    console.log(data);
-    
     if (isLoading) {
         return (
             <div className="flex justify-center items-center h-screen bg-[#23282B]">
@@ -25,8 +22,6 @@ export const PersonalDetails = () => {
         );
     }
 
-    console.log(data);
-    // Extract accounts from the API response
     const accounts = data?.data?.map(account => ({
         name: account.name,
         lastname: account.lastname,
@@ -39,7 +34,9 @@ export const PersonalDetails = () => {
         <div className="bg-[#23282B] min-h-screen py-8 px-4">
             <div className="max-w-6xl mx-auto text-white font-sans">
         
-                <h1 className='bg-gray-700 border-1 p-2 border-gray-950 my-2 h-14 text-center font-semibold text-3xl text-white'>Personl details</h1>
+            <h1 className='bg-gray-700 p-2 my-10 border border-gray-950  text-center font-semibold text-white text-xl sm:text-2xl md:text-3xl h-auto sm:h-14 flex items-center justify-center'>
+                    Personal details
+                </h1>
                 
                 <div className="overflow-x-auto">
                     <table className="w-full text-left">

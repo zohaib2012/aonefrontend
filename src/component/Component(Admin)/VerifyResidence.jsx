@@ -5,7 +5,9 @@ import { useNavigate } from 'react-router-dom';
 
 const VerifyResidence = ({ onClose }) => {
 
-
+  const userdetail =JSON.parse(localStorage.getItem("user"))
+  const user = userdetail._id
+  console.log(user)
   const [residencedocument, setresidenceDocument] = useState([]);
   const [uploadresidencedoc, { isLoading, isSuccess, error }] = useUploadresidencedocMutation();
 
@@ -19,6 +21,9 @@ const VerifyResidence = ({ onClose }) => {
     e.preventDefault();
 
     const formData = new FormData();
+
+    formData.append("user", user)
+    console.log(user)
 
     residencedocument.forEach((doc) => {
       formData.append('residencedocument', doc); // same field name for multiple

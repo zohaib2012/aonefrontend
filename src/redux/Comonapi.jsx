@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 const baseQuery = fetchBaseQuery({
   baseUrl:
     import.meta.env.MODE === "production"
-      ? "https://aone-trade-backend.vercel.app/api/"
+      ? "https://aonebacknd-testingg.vercel.app/api/"
       : "/api",
   credentials: "include",
 });
@@ -75,10 +75,10 @@ export const commonapi = createApi({
     }),
 
     updatePassword: builder.mutation({
-      query: ({ password, updatedPassword }) => ({
+      query: ({ password, updatedPassword,user }) => ({
         method: "post",
         url: "/users/updatepassword",
-        body: { password, updatedPassword },
+        body: { password, updatedPassword ,user},
       }),
       invalidatesTags: ["User"],
     }),

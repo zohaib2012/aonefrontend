@@ -1,6 +1,32 @@
 import { Link } from "react-router-dom";
+import { useDisplayloginIdMutation } from "../../redux/Depositmoney";
+import { useEffect, useState } from "react";
+
 
 const TradingInterface = () => {
+  const [loginId, setLoginId] = useState([])
+  const [displayloginId] = useDisplayloginIdMutation()
+
+  const userdetail = JSON.parse(localStorage.getItem("user"))
+  const userId = userdetail._id || ""
+
+
+  useEffect(() => {
+    const handledisplayL_id = async () => {
+      try {
+        if (!userId) return
+
+        const result = await displayloginId({ user: userId }).unwrap()
+        const extractedLoginId = await result?.data?.map(detail => detail.currentloginId)
+        setLoginId(extractedLoginId || [])
+
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    handledisplayL_id()
+  }, [displayloginId, userId])
+
   return (
     <div className="flex justify-center items-center min-h-screen bg-[#23282B]">
       <div className="bg-[#2C3235] rounded-lg shadow-lg w-full max-w-md p-6 text-white">
@@ -34,7 +60,7 @@ const TradingInterface = () => {
                 readOnly
                 className="bg-gray-700 border border-gray-600 rounded px-3 py-2 w-full text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
-              <button className="ml-2 bg-gray-700 p-2 rounded hover:bg-gray-600">
+              {/* <button className="ml-2 bg-gray-700 p-2 rounded hover:bg-gray-600">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5 text-blue-500"
@@ -44,7 +70,7 @@ const TradingInterface = () => {
                   <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" />
                   <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z" />
                 </svg>
-              </button>
+              </button> */}
             </div>
           </div>
 
@@ -52,37 +78,39 @@ const TradingInterface = () => {
             <label className="text-sm text-gray-400 mb-1 block">
               MT5 Login
             </label>
-            <div className="flex">
-              <input
-                type="text"
-                value="590479693"
-                readOnly
-                className="bg-gray-700 border border-gray-600 rounded px-3 py-2 w-full text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-              <button className="ml-2 bg-gray-700 p-2 rounded hover:bg-gray-600">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 text-blue-500"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" />
-                  <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z" />
-                </svg>
-              </button>
-            </div>
+            {loginId?.map((L_Id, index) => (
+              <div className="flex" key={index}>
+                <input
+                  type="text"
+                  value={L_Id}
+                  readOnly
+                  className="bg-gray-700 border border-gray-600 rounded px-3 py-2 w-full text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+                {/* <button className="ml-2 bg-gray-700 p-2 rounded hover:bg-gray-600">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5 text-blue-500"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" />
+                    <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z" />
+                  </svg>
+                </button> */}
+              </div>
+            ))}
           </div>
 
-          <div className="flex justify-between text-sm my-4">
+          {/* <div className="flex justify-between text-sm my-4">
             <div className="text-gray-400">
               Your password was sent to:
               <div className="text-white">2k4326139@gmail.com</div>
             </div>
             <button className="text-blue-400 hover:text-blue-300">Reset</button>
-          </div>
+          </div> */}
 
           <Link to={"https://aonemt5.tgsm.io/"}>
-            <div className="w-full  my-3  h-12  bg-blue-700 hover:bg-blue-600  text-center p-1 rounded-md text-white">
+            <div className="w-full  my-4  h-12  bg-blue-700 hover:bg-blue-600  text-center p-1 rounded-md text-white">
               Aone Web Terminal
               <span className="text-xs block ">
                 Trade right in your browser

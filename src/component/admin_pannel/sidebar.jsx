@@ -10,14 +10,14 @@ export const Sidebar = () => {
   return (
     <div className="w-64 inline-block bg-gray-900 text-white min-h-screen">
       <div className="p-4 border-b border-gray-800">
-        <div className="flex items-center justify-between">
-          <img src="/public/A-One - Logo-02.svg" alt="Aone Trade" className="h-12 w-10 " />
-          <span className="text-xl font-bold"></span>
-        </div>
+         <div className="flex items-center justify-between">
+          {/* <img src="/public/A-One - Logo-02.svg" alt="Aone Trade" className="h-12 w-10 " /> */} */}
+     <span className="text-xl font-bold"></span>
+        </div> 
       </div>
 
       {/* Search Bar */}
-      <div className="p-4">
+      <div className="p-1">
         <div className="relative">
           <input
             type="text"
@@ -44,9 +44,9 @@ export const Sidebar = () => {
       <nav className="mt-5 px-2">
         {/* Main Navigation */}
         <div className="space-y-4">
-          
+
           <Link
-                to={"/all/documents"}
+            to={"/all/documents"}
             className="flex items-center px-4 py-2.5 text-sm font-medium rounded-lg bg-gray-800 text-white group transition-all duration-200 hover:bg-gray-700"
           >
             <svg
@@ -91,9 +91,8 @@ export const Sidebar = () => {
                 Analytics
               </div>
               <svg
-                className={`ml-2 h-5 w-5 transform transition-transform duration-200 ${
-                  analyticsOpen ? "rotate-180" : ""
-                }`}
+                className={`ml-2 h-5 w-5 transform transition-transform duration-200 ${analyticsOpen ? "rotate-180" : ""
+                  }`}
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 20 20"
                 fill="currentColor"
@@ -106,87 +105,26 @@ export const Sidebar = () => {
               </svg>
             </button>
             <div className={`space-y-1 pl-11 ${!analyticsOpen && "hidden"}`}>
-            
-              <Link
-                to={"#"}
-                className="group flex items-center px-4 py-2 text-sm text-gray-300 rounded-md hover:bg-gray-700 hover:text-white"
-              >
-                Reports
-              </Link>
               <Link
                 to={"/users/list"}
                 className="group flex items-center px-4 py-2 text-sm text-gray-300 rounded-md hover:bg-gray-700 hover:text-white"
               >
                 UserList
               </Link>
-            
-            </div>
-          </div>
 
-          {/* Team Dropdown */}
-          <div className="space-y-1">
-            <button
-              className="w-full flex items-center justify-between px-4 py-2.5 text-sm font-medium rounded-lg text-gray-300 hover:bg-gray-700 hover:text-white focus:outline-none"
-              aria-expanded={teamOpen}
-              onClick={() => setTeamOpen(!teamOpen)}
-            >
-              <div className="flex items-center">
-                <svg
-                  className="h-5 w-5 mr-3"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
-                  />
-                </svg>
-                Team
-              </div>
-              <svg
-                className={`ml-2 h-5 w-5 transform transition-transform duration-200 ${
-                  teamOpen ? "rotate-180" : ""
-                }`}
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </button>
-            <div className={`space-y-1 pl-11 ${!teamOpen && "hidden"}`}>
-              <Link
-              to={"/all/newlyopened/accounts"}
-                className="group flex items-center px-4 py-2 text-sm text-gray-300 rounded-md hover:bg-gray-700 hover:text-white"
-              >
-                Newly Opened Accounts
-              </Link>
               <Link
                 to={"/all/messages"}
                 className="group flex items-center px-4 py-2 text-sm text-gray-300 rounded-md hover:bg-gray-700 hover:text-white"
               >
                 Messages
               </Link>
-              <Link
-                to={"#"}
-                className="group flex items-center px-4 py-2 text-sm text-gray-300 rounded-md hover:bg-gray-700 hover:text-white"
-              >
-                Settings
-              </Link>
+
             </div>
           </div>
 
           {/* Projects */}
-          <Link 
-          to={"/money/deposited"}
+          <Link
+            to={"/money/deposited"}
             href="#"
             className="flex items-center px-4 py-2.5 text-sm font-medium rounded-lg text-gray-300 hover:bg-gray-700 hover:text-white group transition-all duration-200"
           >
@@ -204,12 +142,37 @@ export const Sidebar = () => {
                 d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"
               />
             </svg>
-            
-              
-                Deposited Money
-              </Link>
-          <Link 
-          to={"/all/documents"}
+
+
+            Deposited Money
+          </Link>
+          <Link
+            to={"/all/newlyopened/accounts"}
+            href="#"
+            className="flex items-center px-4 py-2.5 text-sm font-medium rounded-lg text-gray-300 hover:bg-gray-700 hover:text-white group transition-all duration-200"
+          >
+            <svg
+              className="h-5 w-5 mr-3"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"
+              />
+            </svg>
+
+            Opened Accounts
+          </Link>
+
+
+
+          <Link
+            to={"/all/documents"}
             href="#"
             className="flex items-center px-4 py-2.5 text-sm font-medium rounded-lg text-gray-300 hover:bg-gray-700 hover:text-white group transition-all duration-200"
           >
@@ -228,12 +191,11 @@ export const Sidebar = () => {
               />
             </svg>
             Documents
-              </Link>
+          </Link>
 
-          {/* Calendar */}
           <Link
             to={"/all/residencial/documents"}
-            className="flex items-center px-4 py-2.5 text-sm font-medium rounded-lg text-gray-300 hover:bg-gray-700 hover:text-white group transition-all duration-200"
+            className="flex items-center px-4 py-2 text-sm font-medium rounded-lg text-gray-300 hover:bg-gray-700 hover:text-white group transition-all duration-200"
           >
             <svg
               className="h-5 w-5 mr-3"
@@ -270,9 +232,59 @@ export const Sidebar = () => {
                 d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
               />
             </svg>
-        Personal details
+            Personal details
           </Link>
         </div>
+
+        {/* Team Dropdown */}
+        <div className="space-y-1">
+          <button
+            className="w-full flex items-center justify-between px-4 py-2.5 text-sm font-medium rounded-lg text-gray-300 hover:bg-gray-700 hover:text-white focus:outline-none"
+            aria-expanded={teamOpen}
+            onClick={() => setTeamOpen(!teamOpen)}
+          >
+            <div className="flex items-center my-2">
+              <svg
+                className="h-5 w-5 mr-3"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
+                />
+              </svg>
+              Team
+            </div>
+            <svg
+              className={`ml-2 h-5 w-5 transform transition-transform duration-200 ${teamOpen ? "rotate-180" : ""
+                }`}
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fillRule="evenodd"
+                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </button>
+          <div className={`space-y-1 pl-11 ${!teamOpen && "hidden"}`}>
+
+            <Link
+              to={"#"}
+              className="group flex items-center px-4 py-2 text-sm text-gray-300 rounded-md hover:bg-gray-700 hover:text-white"
+            >
+              Settings
+            </Link>
+          </div>
+        </div>
+
       </nav>
 
       {/* User Profile */}

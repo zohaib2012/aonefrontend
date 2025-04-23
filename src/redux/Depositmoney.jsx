@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 const baseQuery = fetchBaseQuery({
   baseUrl:
     import.meta.env.MODE === "production"
-      ? "https://aone-trade-backend.vercel.app/api/"
+      ? "https://aonebacknd-testingg.vercel.app/api/"
       : "/api",
   credentials: "include",
 });
@@ -44,8 +44,28 @@ export const transcationapi = createApi({
         body: { user }
       }),
       invalidatesTags: ["code"]
+    }),
+
+    updateloginId: builder.mutation({
+      query: ({ user, loginId }) => ({
+        url: "/transactions/update/loginId",
+        method: "post",
+        body: { user, loginId }
+      }),
+      invalidatesTags: ["code"]
+    }),
+
+    displayloginId: builder.mutation({
+      query: ({ user }) => ({
+        url: "/transactions/display/loginId",
+        method: "post",
+        body: { user }
+      }),
+      invalidatesTags: ["code"]
     })
+
+
   }),
 });
 
-export const { useSendMoneyMutation, useDisplayMoneyQuery, useAddbalanceMutation,useDisplaybalanceMutation } = transcationapi;
+export const { useSendMoneyMutation, useDisplayMoneyQuery, useAddbalanceMutation, useDisplaybalanceMutation,useUpdateloginIdMutation,useDisplayloginIdMutation } = transcationapi;

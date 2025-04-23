@@ -21,11 +21,9 @@ import TradingInterface from "./component/Component(Admin)/TradingInterface";
 import VerifyResidence from "./component/Component(Admin)/VerifyResidence";
 import Withdrawal from "./component/Component(Admin)/Withdrawal";
 import WithdrawalForm from "./component/Component(Admin)/withdrawalform";
-import Dashboard from "./component/Component(Admin)/Dashboard";
 import TransactionConfirmationForm from "./component/Component(Admin)/TransactionConfirmationForm ";
 import CodeVerification from "./component/Component(Admin)/Codeverification";
 import Joinus from "./component/Component(Admin)/Joinus";
-import { useEffect } from "react";
 import { TradeTable } from "./component/Component(Admin)/TradeTable";
 import { Sidebar } from "./component/admin_pannel/sidebar";
 import { UsersList } from "./component/admin_pannel/UsersList";
@@ -55,15 +53,9 @@ const App = () => {
           <Route path="/password/forget" element={<Forgetpasword />} />
 
 
-          <Route path="/profile/number/verification"  element={<NumberVerification />} />
+          <Route path="/profile/number/verification" element={<NumberVerification />} />
 
-          <Route
-            path="/profile/trade/verifyresidence"
-            element={<VerifyResidence />}
-          />
-
-          <Route path="/profileeee" element={<Dashboard />} />
-
+         
           <Route path="/data" element={<Sidebar />} />
           <Route path="/users/list" element={<UsersList />} />
           <Route path="/money/deposited" element={<Depositmoney />} />
@@ -105,6 +97,8 @@ const App = () => {
             <Route path="email/verification" element={<Emailverification />} />
             <Route path="code/verification" element={<CodeVerification />} />
             <Route path="uploaddocunment" element={<Uploaddocunment />} />
+            <Route path="verifyresidence" element={<VerifyResidence />} />
+
             <Route path="joinus" element={<Joinus />} />
             <Route path="wallet/transfer" element={<Transferpayment />} />
             <Route path="contactDetail" element={<ContactDetail />} />

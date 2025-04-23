@@ -42,8 +42,9 @@ console.log(data)
         <div className="bg-[#23282B] min-h-screen py-8 px-4">
             <div className="max-w-6xl mx-auto text-white font-sans">
         
-                <h1 className='bg-gray-700 boder-1 p-2 border-gray-950 my-2 h-14 text-center font-semibold  text-3xl text-white'>User List</h1>
-                
+            <h1 className='bg-gray-700 p-2 my-10 border border-gray-950  text-center font-semibold text-white text-xl sm:text-2xl md:text-3xl h-auto sm:h-14 flex items-center justify-center'>
+                    Opened Accounts
+                </h1>   
                 <div className="overflow-x-auto">
                     <table className="w-full text-left">
                         <thead className="bg-[#2C3235] border-2 border-gray-600 text-gray-400 text-sm">

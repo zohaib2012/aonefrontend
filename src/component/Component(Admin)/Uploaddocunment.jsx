@@ -30,7 +30,7 @@ const DocumentUploadForm = () => {
 
    const response= await uploadDocument(formData);
   console.log(response)
-  navigate("/profile/trade/verifyresidence")
+  navigate("/profile/verifyresidence")
   };
 
   return (

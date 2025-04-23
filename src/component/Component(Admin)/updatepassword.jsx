@@ -2,9 +2,13 @@ import { useState } from "react";
 import { useUpdatePasswordMutation } from "../../redux/Comonapi";
 
 const updatepassword = () => {
+  const userdetail= JSON.parse(localStorage.getItem("user"))
+  const user= userdetail._id
+
   const [formdata, setformData] = useState({
     password: "",
     updatedPassword: "",
+    user:user
   });
 
   const [updatePassword, { isError, isSuccess, isLoading, error }] =
@@ -30,6 +34,7 @@ const updatepassword = () => {
         setformData({
           password: "",
           updatedPassword: "",
+          user:user
         });
       }
     } catch (error) {

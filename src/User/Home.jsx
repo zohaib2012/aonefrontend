@@ -5,7 +5,7 @@ import { BiMoneyWithdraw } from "react-icons/bi";
 import { FaMoneyBillTransfer } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { useDisplaynamedataMutation } from "../redux/p.detailapi";
-import { useDisplaybalanceMutation } from "../redux/Depositmoney";
+import { useDisplaybalanceMutation, useDisplayloginIdMutation } from "../redux/Depositmoney";
 
 const buttonData = [
   {
@@ -34,9 +34,11 @@ export default function Home() {
 
   const [names, setName] = useState([])
   const [balance, setBalance] = useState([])
+  const [loginId, setLoginId] = useState([])
 
   const [displaynamedata] = useDisplaynamedataMutation()
   const [displaybalance] = useDisplaybalanceMutation()
+  const [displayloginId] = useDisplayloginIdMutation()
 
   const userdetail = JSON.parse(localStorage.getItem("user"))
   const userId = userdetail._id || ""
@@ -45,7 +47,6 @@ export default function Home() {
     const handledisplayname = async () => {
       try {
         if (!userId) return
-        console.log(userId)
         var result = await displaynamedata({ user: userId }).unwrap()
 
         const extractednames = result?.data?.map(item => item.name);
@@ -63,7 +64,6 @@ export default function Home() {
     const handledisplaybalance = async () => {
       try {
         if (!userId) return
-        console.log(userId)
         var data = await displaybalance({ user: userId }).unwrap()
 
         const userbalance = data?.data?.map(detail => detail.balance)
@@ -75,6 +75,22 @@ export default function Home() {
     }
     handledisplaybalance()
   }, [displaybalance, userId])
+
+  useEffect(() => {
+    const handledisplayL_id = async () => {
+      try {
+        if (!userId) return
+
+        const result = await displayloginId({ user: userId }).unwrap()
+        const extractedLoginId = await result?.data?.map(detail => detail.currentloginId)
+        setLoginId(extractedLoginId || [])
+
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    handledisplayL_id()
+  }, [displayloginId, userId])
 
   return (
     <div className="w-full px-4 sm:px-6 md:px-8 max-w-7xl mx-auto ">
@@ -154,9 +170,9 @@ export default function Home() {
               <div className="text-gray-400 mb-2">Your wallet</div>
 
               {balance?.map((balance, index) => (
-              <div key={index} className="text-white p-2">
-              </div>
-            ))}
+                <div key={index} className="text-white p-2">
+                </div>
+              ))}
 
               <div className="text-3xl font-bold text-white">{balance} USD</div>
               <div className="text-sm text-gray-400 mt-2">
@@ -187,8 +203,15 @@ export default function Home() {
             <span>Aone Mt5</span>
           </div>
           <div className="flex gap-2">
-            <span className="text-gray-400">Login:</span>
-            <span>766636</span>
+
+            {loginId?.map((L_Id, index) => (
+              <div key={index} className="text-white p-2">
+                <span className="text-gray-400">Login:</span>
+                <span>
+                  <td className="px-2">{L_Id}</td>
+                </span>
+              </div>
+            ))}
           </div>
         </div>
       </div>
