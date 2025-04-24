@@ -170,7 +170,8 @@ const Register = () => {
                 {formErrors.terms}
               </p>
             )}
-
+   <div className="text-gray-700 text-xs">Password must be at least 8 characters, include uppercase, lowercase, number and special character</div>
+              
             {/* Submit Button */}
             <button
               type="submit"

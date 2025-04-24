@@ -101,13 +101,13 @@ const WithdrawalForm = () => {
   }
   return (
     <div className="lg:min-h-screen p-4 text-white flex flex-col lg:flex-row items-center justify-center">
-      <div className="w-full max-w-4xl border-2 border-[#2C2C2C] bg-[#2C2C2C] flex flex-col lg:flex-row overflow-hidden">
+      <div className="w-full max-w-4xl border-2 border-gray-600 flex flex-col lg:flex-row overflow-hidden">
         {/* Deposit Methods Column (hidden on mobile, shown as tabbar) */}
-        <div className="hidden lg:block w-1/3 border-r border-[#3C3C3C]">
-          <div className="p-2 border-b border-[#3C3C3C]">
+        <div className="hidden lg:block w-1/3 border-r border-gray-600">
+          <div className="p-2 border-b border-gray-600">
             <h2 className="text-xl font-bold">Withdraw</h2>
           </div>
-          <div className="divide-y divide-[#3C3C3C]">
+          <div className="divide-y divide-gray-600">
             <div
               className={`p-2 flex items-center cursor-pointer hover:bg-[#3C3C3C] ${selectedMethod === "usdt" ? "bg-[#1E1E1E]" : ""
                 }`}
@@ -193,7 +193,7 @@ const WithdrawalForm = () => {
               </div>
             )}
 
-            <div className="max-w-2xl mx-auto p-4  bg-[#2C2C2C] rounded-lg shadow-md">
+            <div className="max-w-2xl mx-auto p-4  rounded-lg shadow-md">
               <div className="mb-6">
                 <h1 className="text-2xl font-bold text-white">Withdrawal</h1>
                 <a href="#" className="text-sm text-blue-500">
@@ -212,7 +212,7 @@ const WithdrawalForm = () => {
                       name="bank"
                       value={formdata.bank} // Make sure this is set
                       onChange={handlechange}
-                      className="w-full h-12 px-3 border bg-[#1E1E1E] text-gray-300 border-gray-600 rounded appearance-none pr-8"
+                      className="w-full h-12 px-3 border-2 bg-[#1E1E1E] text-gray-300 border-gray-600 rounded appearance-none pr-8"
                     >
                       {banks.map((bank) => (
                         <option key={bank.value} value={bank.value}>
@@ -249,7 +249,7 @@ const WithdrawalForm = () => {
                       name="currency"
                       onChange={handlechange}
                       value={formdata.currency}
-                      className="w-full h-12 px-3 border bg-[#1E1E1E] text-gray-300 border-gray-600 rounded appearance-none pr-8"
+                      className="w-full h-12 px-3 border-2 bg-[#1E1E1E] text-gray-300 border-gray-600 rounded appearance-none pr-8"
                     >
                       <option value="selectcurrency">Select currency</option>
                       <option value="USD">USD</option>
@@ -295,7 +295,7 @@ const WithdrawalForm = () => {
                   <input
                     type="text"
                     onChange={handlechange}
-                    className="w-full h-12 px-4 border border-gray-600 bg-[#1E1E1E] rounded text-white text-lg"
+                    className="w-full h-12 px-4 border-2 border-gray-600 bg-[#1E1E1E] rounded text-white text-lg"
                     name="account"
                     value={formdata.account}
                     placeholder="Wallet/login Id"
@@ -311,7 +311,7 @@ const WithdrawalForm = () => {
                   <input
                     type="text"
                     onChange={handlechange}
-                    className="w-full h-12 px-4 border border-gray-600 bg-[#1E1E1E] rounded text-white text-lg"
+                    className="w-full h-12 px-4 border-2 border-gray-600 bg-[#1E1E1E] rounded text-white text-lg"
                     name="accountno"
                     value={formdata.accountno}
                     placeholder="Account No"
@@ -327,7 +327,7 @@ const WithdrawalForm = () => {
                   <input
                     type="Number"
                     onChange={handlechange}
-                    className="w-full h-12 px-4 border border-gray-600 bg-[#1E1E1E] rounded text-white text-lg"
+                    className="w-full h-12 px-4 border-2 border-gray-600 bg-[#1E1E1E] rounded text-white text-lg"
                     name="amount"
                     value={formdata.amount}
                     placeholder="Enter amount"

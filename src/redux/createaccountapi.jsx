@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 const baseQuery = fetchBaseQuery({
   baseUrl:
     import.meta.env.MODE === "production"
-      ? "https://aonebacknd-testingg.vercel.app/api/"
+      ? "https://aonebackendd.vercel.app/api/"
       : "/api",
   prepareHeaders: (headers) => {
     const token = localStorage.getItem("auth token");

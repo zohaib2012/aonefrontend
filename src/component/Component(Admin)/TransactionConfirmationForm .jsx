@@ -87,10 +87,10 @@ const TransactionConfirmationForm = () => {
 
   return (
     <div className="lg:min-h-screen p-4 text-white flex flex-col lg:flex-row items-center justify-center">
-      <div className="w-full max-w-4xl border-2 border-[#2C2C2C] bg-[#2C2C2C] flex flex-col lg:flex-row overflow-hidden">
+      <div className="w-full max-w-4xl border-2 border-gray-600 flex flex-col lg:flex-row overflow-hidden">
         {/* Deposit Methods Column (hidden on mobile, shown as tabbar) */}
-        <div className="hidden lg:block w-1/3 border-r border-[#3C3C3C]">
-          <div className="p-2 border-b border-[#3C3C3C]">
+        <div className="hidden lg:block w-1/3 border-r border-gray-600">
+          <div className="p-2 border-b border-gray-600">
             <h2 className="text-xl font-bold">Deposit</h2>
           </div>
           {/* <div className="divide-y divide-[#3C3C3C]">
@@ -131,7 +131,7 @@ const TransactionConfirmationForm = () => {
               <span>Jazzcash</span>
             </div>
           </div> */}
-           <div className="divide-y divide-[#3C3C3C]">
+           <div className="divide-y divide-gray-600">
                       <div
                         className={`p-2 flex items-center cursor-pointer hover:bg-[#3C3C3C] ${
                           selectedMethod === "usdt" ? "bg-[#1E1E1E]" : ""

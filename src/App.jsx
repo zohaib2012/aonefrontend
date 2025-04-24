@@ -88,6 +88,7 @@ const App = () => {
               path="wallet/deposit/money"
               element={<TransactionConfirmationForm />}
             />
+            <Route path="verifyresidence" element={<VerifyResidence />} />
             <Route path="withdrawal" element={<Withdrawal />} />
             <Route path="withdrawal/form" element={<WithdrawalForm />} />
             <Route path="trade" element={<TradingInterface />} />
@@ -97,7 +98,6 @@ const App = () => {
             <Route path="email/verification" element={<Emailverification />} />
             <Route path="code/verification" element={<CodeVerification />} />
             <Route path="uploaddocunment" element={<Uploaddocunment />} />
-            <Route path="verifyresidence" element={<VerifyResidence />} />
 
             <Route path="joinus" element={<Joinus />} />
             <Route path="wallet/transfer" element={<Transferpayment />} />

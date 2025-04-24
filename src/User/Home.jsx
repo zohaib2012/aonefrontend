@@ -95,7 +95,7 @@ export default function Home() {
   return (
     <div className="w-full px-4 sm:px-6 md:px-8 max-w-7xl mx-auto ">
       {/* Top Notification Banner */}
-      <div className="bg-[#23282B] border border-gray-700 text-white p-4 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between rounded-xl mb-6 gap-4">
+      <div className="bg-[#23282B] border-2 border-gray-600 text-white p-4 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between rounded-xl mb-6 gap-4">
         <div className="flex items-start sm:items-center gap-3">
           <Lock className="shrink-0 mt-1" />
           <div>
@@ -117,7 +117,7 @@ export default function Home() {
       </div>
 
       {/* Partner Invite Banner */}
-      <div className="bg-green-600/20 border border-gray-700 text-white p-4 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between rounded-xl mb-6 gap-4">
+      <div className="bg-green-600/20 border-2 border-gray-600 text-white p-4 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between rounded-xl mb-6 gap-4">
         <div className="flex items-start gap-3">
           <AiOutlineUsergroupAdd className="w-10 h-10 sm:w-12 sm:h-12" />
           <div>
@@ -128,7 +128,7 @@ export default function Home() {
           </div>
         </div>
         <Link to={"/profile/joinus"}>
-          <button className="text-base bg-[#23282B] hover:scale-105 text-white border px-4 py-2 rounded flex items-center transition-all">
+          <button className="text-base bg-[#23282B] hover:scale-105 text-white border-2 border-gray-600 px-4 py-2 rounded flex items-center transition-all">
             Join <ChevronRight className="ml-2 w-5" />
           </button>
         </Link>
@@ -145,7 +145,7 @@ export default function Home() {
       </div>
 
       {/* Wallet Card */}
-      <div className="bg-[#23282B] border border-gray-700 rounded-xl p-4 sm:p-6">
+      <div className="bg-[#23282B] border-2 border-gray-600 rounded-xl p-4 sm:p-6">
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 mb-6">
           {/* Wallet Info */}
           <div className="p-4 bg-[#1C1F22] rounded-lg w-full max-w-xs">
@@ -175,10 +175,7 @@ export default function Home() {
               ))}
 
               <div className="text-3xl font-bold text-white">{balance} USD</div>
-              <div className="text-sm text-gray-400 mt-2">
-                Virtual wallet number
-              </div>
-              <div className="text-sm text-white">W05175554USD</div>
+              
 
             </div>
           </div>
@@ -188,7 +185,7 @@ export default function Home() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {buttonData.map(({ to, icon, label }, index) => (
             <Link key={index} to={to}>
-              <button className="w-full rounded-3xl bg-[#1E1E1E] text-white p-3 hover:bg-blue-500 border-2  border-[#0d6efd] transition-all">
+              <button className="w-full rounded-3xl  text-white p-3 hover:bg-blue-500 border-2  border-[#0d6efd] transition-all">
                 {icon}
                 {label}
               </button>
@@ -217,7 +214,7 @@ export default function Home() {
       </div>
 
       {/* Transactions History */}
-      <div className="mt-6 bg-[#23282B] border border-gray-700 p-4 sm:p-6 rounded-xl">
+      <div className="mt-6 bg-[#23282B] border-2 border-gray-600 p-4 sm:p-6 rounded-xl">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center">
           <h3 className="text-lg sm:text-xl font-bold text-white">
             Transactions History

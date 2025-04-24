@@ -34,12 +34,16 @@ const Login = () => {
     return Object.keys(errors).length === 0;
   };
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    
     if (!validateForm()) return;
-
+    
     try {
+   
+    
       // Call the RTK Query mutation with the form data
       const response = await loginUser({ email, password }).unwrap();
 
@@ -143,12 +147,14 @@ const Login = () => {
               >
                 {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
               </button>
-              {formErrors.password && (
+             {formErrors.password && (
                 <p className="text-red-500 text-xs md:text-sm mt-1">
                   {formErrors.password}
                 </p>
               )}
             </div>
+            <div className="text-gray-700 text-xs">Password must be at least 8 characters, include uppercase, lowercase, number and special character</div>
+              
 
             {/* Submit Button */}
             <button

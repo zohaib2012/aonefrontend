@@ -268,7 +268,9 @@ const OpenNewAccountType = () => {
               >
                 {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
               </button>
+            
             </div>
+              <div className="text-gray-400 text-sm">Password must be at least 8 characters, include uppercase, lowercase, number and special character</div>
           </div>
 
           <button
@@ -284,6 +286,7 @@ const OpenNewAccountType = () => {
           >
             {isLoading ? "Creating account..." : "Create an account"}
           </button>
+          
         </form>
 
         <ToastContainer

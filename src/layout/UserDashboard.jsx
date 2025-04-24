@@ -17,8 +17,9 @@ import { useLogoutMutation } from "../redux/Comonapi";
 import { BiSupport } from "react-icons/bi";
 
 import { IoIosNotificationsOutline } from "react-icons/io";
-import { MdLanguage, MdLogout } from "react-icons/md";
-
+import { MdLogout } from "react-icons/md";
+import { FaApple } from "react-icons/fa6";
+import { IoLogoGooglePlaystore } from "react-icons/io5";
 const navItems = [
   { to: "/profile", icon: Wallet, label: "A Wallet" },
   { to: "/profile/wallet/deposit/method", icon: CreditCard, label: "Deposit" },
@@ -75,40 +76,62 @@ export default function DashboardLayout() {
   };
 
   return (
-    <div className="flex bg-[#23282B]">
+    <div className="flex bg-[#23282B] ">
       <div
-        className={`fixed inset-y-0 left-0 z-40 w-60 bg-[#2c3235] border-r border-[#3C3C3C] transform transition-transform duration-300 ease-in-out md:relative md:translate-x-0 md:flex md:flex-col ${
-          sidebarOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
+        className={`fixed inset-y-0 left-0 z-40 w-60 bg-[#2c3235]  border-r-2 border-gray-600 transform transition-transform duration-300 ease-in-out md:relative md:translate-x-0 md:flex md:flex-col ${sidebarOpen ? "translate-x-0" : "-translate-x-full"
+          }`}
       >
         <div className="w-12  my-2 mx-8">
           <img src={Logo} alt="Logo" className="w-full h-full " />
         </div>
-        <nav className="flex-1 px-2 py-4 overflow-y-auto">
-          {navItems.map(({ to, icon: Icon, label }, index) => (
-            <Link
-              key={index}
-              to={to}
-              className={`flex items-center px-4 py-2 mt-2 text-white hover:text-red-600 ${
-                location.pathname === to ? "bg-Blue  rounded-md" : ""
-              }`}
-            >
-              <Icon className="w-5 mr-2" />
-              {label}
-            </Link>
-          ))}
-        </nav>
+        <div className="border-b-2 border-gray-600">
+
+          <nav className="flex-1 px-2 py-4 overflow-y-auto ">
+            {navItems.map(({ to, icon: Icon, label }, index) => (
+              <Link
+                key={index}
+                to={to}
+                className={` flex items-center px-4 py-2 mt-2 text-gray-400 hover:text-red-600 ${location.pathname === to ? "bg-[#23282B] text-white rounded-md border-l-4 border-red-600 " : ""
+                  }`}
+              >
+                <Icon className={` ${location.pathname === to ? "w-5 mr-2 text-red-600" : "w-5 mr-2"} `} />
+                {label}
+              </Link>
+            ))}
+          </nav>
+
+
+        </div>
+        <div className="flex justify-center py-4">
+          <Link to={"https://testflight.apple.com/join/MQcAGqK6"}>
+          <button className="w-20 h-12 rounded-md">
+            <FaApple className="w-10 h-10 text-gray-600 hover:text-red-600" />
+          </button>
+          </Link>
+          <Link
+            to={
+              "https://drive.google.com/uc?export=download&id=1IKI4Pft7MdOds4rWm4gtk2_rCVP7150M"
+            }>
+
+            <button className="w-20 h-12 rounded-md">
+              <IoLogoGooglePlaystore className="w-10 h-10 text-gray-600 hover:text-red-600" />
+            </button>
+          </Link>
+
+        </div>
+
+        <img src="https://res.cloudinary.com/dv0rjcjfe/image/upload/v1745521333/products/epz8rrrablpprvesna6s.jpg" alt="aone" className="w-40 h-40 mx-auto" />
       </div>
 
       {sidebarOpen && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-30 md:hidden"
+          className="fixed inset-0 bg-black bg-opacity-50 z-30 md:hidden "
           onClick={toggleSidebar}
         />
       )}
 
       <div className="flex flex-col flex-1 overflow-y-auto">
-        <div className="flex items-center justify-between h-16 bg-[#2d3438] border-b border-[#2c3134] px-4">
+        <div className="flex items-center justify-between h-16 bg-[#2d3438] border-b border-gray-600 px-4">
           <button className="text-gray-500 md:hidden" onClick={toggleSidebar}>
             {sidebarOpen ? (
               <X className="h-6 w-6" />
@@ -118,11 +141,11 @@ export default function DashboardLayout() {
           </button>
 
           <div className="relative ml-auto py-2 flex gap-4">
-            <div className="flex items-center gap-2 text-white text-sm">
-              <MdLanguage className="text-xl" />
+            <div className="flex items-center gap-2 text-gray-50  hover:text-red-600 text-sm">
+              <img className="text-xl rounded-md w-5 h-5 text-red-600" src="https://avatars.mds.yandex.net/i?id=eb7eb241ec81fc133910df68263585d758564c8c-12715029-images-thumbs&n=13" alt="" />
               English
             </div>
-            <div className="hidden lg:flex items-center gap-2 text-white text-sm">
+            <div className="hidden lg:flex items-center gap-2 text-white text-sm ">
               {dropdownItems.map((item, idx) => {
                 const Icon = item.icon;
                 const isIconOnly =
@@ -133,19 +156,17 @@ export default function DashboardLayout() {
                     <Link
                       key={idx}
                       to={item.to}
-                      className={`flex items-center gap-2 px-4 py-2 text-sm text-white ${
-                        isIconOnly ? "px-2 py-2" : ""
-                      }`}
+                      className={`flex items-center gap-2 px-4 py-2 text-sm text-white ${isIconOnly ? "px-2 py-2" : ""
+                        }`}
                     >
                       <Icon
-                        className={`text-xl transition-colors ${
-                          item.label === "Logout"
-                            ? "bg-red-600 p-2 rounded text-white hover:text-red-600"
-                            : "hover:text-red-600"
-                        }`}
+                        className={`text-xl transition-colors ${item.label === "Logout"
+                          ? "bg-red-600 p-2 rounded text-white hover:text-red-600"
+                          : "hover:text-red-600"
+                          }`}
                       />
                       {!isIconOnly && (
-                        <span className="transition-colors hover:text-red-600">
+                        <span className="transition-colors hover:text-red-600 ">
                           {item.label}
                         </span>
                       )}
@@ -156,9 +177,8 @@ export default function DashboardLayout() {
                     <button
                       key={idx}
                       onClick={handleLogout}
-                      className={`flex items-center gap-2 w-full text-left px-4 py-2 text-sm text-white hover:text-red-600 ${
-                        isIconOnly ? "px-2 py-2" : ""
-                      }`}
+                      className={`flex items-center gap-2 w-full text-left px-4 py-2 text-sm text-white hover:text-red-600 ${isIconOnly ? "px-2 py-2" : ""
+                        }`}
                       disabled={isLoading}
                     >
                       <Icon className="text-xl text-white transition-colors hover:text-red-600" />
@@ -180,7 +200,7 @@ export default function DashboardLayout() {
               className="flex items-center space-x-2 focus:outline-none"
             >
               <img src={Avatar} alt="Avatar" className="w-8 h-8 rounded-full" />
-              <ChevronDown className="w-4 h-4 text-gray-600 lg:hidden" />
+              <ChevronDown className="w-4 h-4 text-gray-600 lg:hidden " />
             </button>
             {dropdownOpen && (
               <div className="absolute right-0 mt-10 w-40 bg-white rounded-md shadow-lg z-50 lg:hidden">
@@ -223,7 +243,7 @@ export default function DashboardLayout() {
             © 2025 AONE Trade. All Rights Reserved.
           </span>
         </footer>
-        
+
       </div>
     </div>
   );

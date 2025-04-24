@@ -7,6 +7,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { IoLogoUsd } from "react-icons/io5";
 import { FaEthereum } from "react-icons/fa6";
 import { RiSecurePaymentFill } from "react-icons/ri";
+import Ethrium from "../../assets/images/eth_orbital-dark.png"
+import USDT from "../../assets/images/usdt_orbital-dark.png"
+import Binance from "../../assets/images/binance-dark.png"
+import Creditcard from "../../assets/images/mastercard-dark.png"
+import Localbank from "../../assets/images/local-bank-dark.png"
 // import EasyPaisa from "../../assets/images/Easypaisa-logo.png";
 // import Jazzcash from "../../assets/images/jazzcash-logo.jpeg";
 
@@ -33,60 +38,55 @@ const Depositpaymentaccount = () => {
 
   return (
     <div className="lg:min-h-screen p-4 text-white flex flex-col lg:flex-row items-center justify-center">
-      <div className="w-full max-w-4xl border-2 border-[#2C2C2C] bg-[#2C2C2C] flex flex-col lg:flex-row overflow-hidden">
+      <div className="w-full max-w-4xl border-2 border-gray-600 flex flex-col lg:flex-row overflow-hidden">
         {/* Deposit Methods Column (hidden on mobile, shown as tabbar) */}
-        <div className="hidden lg:block w-1/3 border-r border-[#3C3C3C]">
-          <div className="p-2 border-b border-[#3C3C3C]">
+        <div className="hidden lg:block w-1/3 border-r border-gray-600">
+          <div className="p-2 border-b border-gray-600">
             <h2 className="text-xl font-bold">Deposit</h2>
           </div>
-         <div className="divide-y divide-[#3C3C3C]">
-                    <div
-                      className={`p-2 flex items-center cursor-pointer hover:bg-[#3C3C3C] ${
-                        selectedMethod === "usdt" ? "bg-[#1E1E1E]" : ""
-                      }`}
-                      onClick={() => setSelectedMethod("usdt")}
-                    >
-                      <IoLogoUsd className="w-6 h-6 mr-3" />
-                      <span>USDT</span>
-                    </div>
-                    <div
-                      className={`p-2 flex items-center cursor-pointer hover:bg-[#3C3C3C] ${
-                        selectedMethod === "bank" ? "bg-[#1E1E1E]" : ""
-                      }`}
-                      onClick={() => setSelectedMethod("bank")}
-                    >
-                      <AiFillBank className="w-6 h-6 mr-3" />
-                      <span>Local Bank Transfer</span>
-                    </div>
-                    <div
-                      className={`p-2 flex items-center cursor-pointer hover:bg-[#3C3C3C] ${
-                        selectedMethod === "card" ? "bg-[#1E1E1E]" : ""
-                      }`}
-                      onClick={() => setSelectedMethod("card")}
-                    >
-                      <BiSolidCreditCardAlt className="w-6 h-6 mr-3" />
-                      <span>Credit/Debit Card</span>
-                    </div>
-                    <div
-                      className={`p-2 flex items-center cursor-pointer hover:bg-[#3C3C3C] ${
-                        selectedMethod === "crypto" ? "bg-[#1E1E1E]" : ""
-                      }`}
-                      onClick={() => setSelectedMethod("crypto")}
-                    >
-                      <RiSecurePaymentFill className="w-6 h-6 mr-3" />
-                      <span>Crypto Payment</span>
-                    </div>
-                    <div
-                      className={`p-2 flex items-center cursor-pointer hover:bg-[#3C3C3C] ${
-                        selectedMethod === "eth" ? "bg-[#1E1E1E]" : ""
-                      }`}
-                      onClick={() => setSelectedMethod("eth")}
-                    >
-                      <FaEthereum className="w-6 h-6 mr-3" />
-                      <span>Ethereum</span>
-                    </div>
+          <div className="divide-y divide-gray-600">
+            <div
+              className={`p-2 flex items-center cursor-pointer hover:bg-[#3C3C3C] ${selectedMethod === "usdt" ? "bg-[#1E1E1E]" : ""
+                }`}
+              onClick={() => setSelectedMethod("usdt")}
+            >
+              <img src={USDT} alt="aone" className="w-6 h-6 mr-3" />
+              <span>USDT</span>
+            </div>
+            <div
+              className={`p-2 flex items-center cursor-pointer hover:bg-[#3C3C3C] ${selectedMethod === "bank" ? "bg-[#1E1E1E]" : ""
+                }`}
+              onClick={() => setSelectedMethod("bank")}
+            >
+                 <img src={Localbank} alt="aone" className="w-6 h-6 mr-3" />
+              <span>Local Bank Transfer</span>
+            </div>
+            <div
+              className={`p-2 flex items-center cursor-pointer hover:bg-[#3C3C3C] ${selectedMethod === "card" ? "bg-[#1E1E1E]" : ""
+                }`}
+              onClick={() => setSelectedMethod("card")}
+            >
+                 <img src={Creditcard} alt="aone" className="w-6 h-6 mr-3" />
+              <span>Credit/Debit Card</span>
+            </div>
+            <div
+              className={`p-2 flex items-center cursor-pointer hover:bg-[#3C3C3C] ${selectedMethod === "crypto" ? "bg-[#1E1E1E]" : ""
+                }`}
+              onClick={() => setSelectedMethod("crypto")}
+            >
+                 <img src={Binance} alt="aone" className="w-6 h-6 mr-3" />
+              <span>Crypto Payment</span>
+            </div>
+            <div
+              className={`p-2 flex items-center cursor-pointer hover:bg-[#3C3C3C] ${selectedMethod === "eth" ? "bg-[#1E1E1E]" : ""
+                }`}
+              onClick={() => setSelectedMethod("eth")}
+            >
+          <img src={Ethrium} alt="aone" className="w-6 h-6 mr-3" />
+              <span>Ethereum</span>
+            </div>
 
-                   {/* <div
+            {/* <div
                       className={`p-2 flex items-center cursor-pointer hover:bg-[#3C3C3C] ${
                         selectedMethod === "ep" ? "bg-[#1E1E1E]" : ""
                       }`}
@@ -113,10 +113,10 @@ const Depositpaymentaccount = () => {
                       <span>Jazzcash</span>
                     </div> */}
 
-                  </div>
+          </div>
           <button
             onClick={handleback}
-            className="bg-gray-700 hover:bg-gray-500 text-blue-400 px-4 py-2 mt-52 mx-1 rounded-lg transition"
+            className="bg-gray-700 hover:bg-gray-500 text-blue-400 px-4 py-2 mt-80 mx-1 rounded-lg transition"
           >
             Back
           </button>
@@ -130,7 +130,7 @@ const Depositpaymentaccount = () => {
               <h2 className="text-xl font-semibold">
                 1. Aone Pro partner's account information
               </h2>
-              <div className="bg-[#3C3C3C] rounded-lg p-4 space-y-3">
+              <div className="bg-[#3C3C3C] border-2 border-gray-600 rounded-lg p-4 space-y-3">
                 <div className="flex justify-between">
                   <span className="text-gray-400">A/c no</span>
                   <span>13347900396403</span>
@@ -228,7 +228,7 @@ const Depositpaymentaccount = () => {
           <FaEthereum className="w-6 h-6 mb-1" />
           ETH
         </button>
-        
+
         {/* <button
           onClick={() => setSelectedMethod("jz")}
           className="flex flex-col items-center text-gray-300"

@@ -6,7 +6,7 @@ export const documentapi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl:
       import.meta.env.MODE === "production"
-        ? "https://aonebacknd-testingg.vercel.app/api/"
+        ? "https://aonebackendd.vercel.app/api/"
         : "/api",
     credentials: "include",
   }),
