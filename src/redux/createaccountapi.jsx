@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 const baseQuery = fetchBaseQuery({
   baseUrl:
     import.meta.env.MODE === "production"
-      ? "https://aonebackendd.vercel.app/api/"
+      ? "https://aone-app-backend-production.up.railway.app/api/"
       : "/api",
   prepareHeaders: (headers) => {
     const token = localStorage.getItem("auth token");
@@ -22,11 +22,11 @@ export const createaccountapi = createApi({
   endpoints: (builder) => ({
     // User Registration
     createAccount: builder.mutation({
-      query: ({ user, leverage, currency, password, accountType }) => ({
+      query: ({ user, leverage, currency, password, accountType,userEmail }) => ({
         method: "POST",
         url: "/account/create",
         credentials: "include",
-        body: { user, leverage, currency, password, accountType },
+        body: { user, leverage, currency, password, accountType,userEmail },
       }),
       invalidatesTags: ["accounts"],
     }),

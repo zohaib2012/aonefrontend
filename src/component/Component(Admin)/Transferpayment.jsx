@@ -25,7 +25,7 @@ const Transferpayment = () => {
   };
 
   return (
-    <div className="bg-[#1E1E1E] min-h-screen flex items-center justify-center p-3">
+    <div className="bg-[#23282B] min-h-screen flex items-center justify-center p-3">
       <form 
         onSubmit={handleSubmit} 
         className="w-full max-w-4xl  "

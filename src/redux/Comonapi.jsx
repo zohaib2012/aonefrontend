@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 const baseQuery = fetchBaseQuery({
   baseUrl:
     import.meta.env.MODE === "production"
-      ? "https://aonebackendd.vercel.app/api/"
+      ? "https://aone-app-backend-production.up.railway.app/api/"
       : "/api",
   credentials: "include",
 });
@@ -50,7 +50,7 @@ export const commonapi = createApi({
     sendCode: builder.mutation({
       query: ({ email }) => ({
         method: "POST",
-        url: "/users/send-code",
+        url: "/users/forget/password/code",
         body: { email },
       }),
       invalidatesTags: ["User"],
@@ -60,7 +60,7 @@ export const commonapi = createApi({
     verifyCode: builder.mutation({
       query: ({ code }) => ({
         method: "POST",
-        url: "/users/verify-code",
+        url: "/users/forget/password/verify",
         body: { code },
       }),
     }),
@@ -75,13 +75,24 @@ export const commonapi = createApi({
     }),
 
     updatePassword: builder.mutation({
-      query: ({ password, updatedPassword,user }) => ({
+      query: ({ password, updatedPassword, user }) => ({
         method: "post",
         url: "/users/updatepassword",
-        body: { password, updatedPassword ,user},
+        body: { password, updatedPassword, user },
       }),
       invalidatesTags: ["User"],
     }),
+
+
+    usesProfiles : builder.query({
+      query: () => "/users/all/users/profiles",
+      providesTags: ["User"],
+    }),
+
+
+
+
+
   }),
 });
 
@@ -94,4 +105,5 @@ export const {
   useVerifyCodeMutation,
   useForgetPasswordMutation,
   useUpdatePasswordMutation,
+  useUsesProfilesQuery
 } = commonapi;

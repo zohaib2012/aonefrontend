@@ -11,8 +11,11 @@ import { RiSecurePaymentFill } from "react-icons/ri";
 // import Jazzcash from "../../assets/images/jazzcash-logo.jpeg";
 
 const TransactionConfirmationForm = () => {
-  const userDetail = JSON.parse(localStorage.getItem("user"));
-  const user = userDetail._id;
+  
+  // const userDetail = JSON.parse(localStorage.getItem("user"));
+  // const user = userDetail._id;
+
+
   const [selectedMethod, setSelectedMethod] = useState("bank");
 
   const [formData, setFormData] = useState({

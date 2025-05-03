@@ -1,110 +1,115 @@
+
 import { Check } from "lucide-react";
 import { AiFillBank } from "react-icons/ai";
-import { BiSolidCreditCardAlt } from "react-icons/bi";
-import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
-import { IoLogoUsd } from "react-icons/io5";
-import { FaEthereum } from "react-icons/fa6";
-import { RiSecurePaymentFill } from "react-icons/ri";
-import Ethrium from "../../assets/images/eth_orbital-dark.png"
-import USDT from "../../assets/images/usdt_orbital-dark.png"
-import Binance from "../../assets/images/binance-dark.png"
-import Creditcard from "../../assets/images/mastercard-dark.png"
-import Localbank from "../../assets/images/local-bank-dark.png"
-// import EasyPaisa from "../../assets/images/Easypaisa-logo.png";
-// import Jazzcash from "../../assets/images/jazzcash-logo.jpeg";
-
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
+import USDT from "../../assets/images/usdt_orbital-dark.png";
+import Localbank from "../../assets/images/local-bank-dark.png";
+import EasyPaisa from "../../assets/images/Easypaisa-logo.png";
+import Jazzcash from "../../assets/images/jazzcash-logo.jpeg";
 
 const DepositPaymentmethod = () => {
   const navigate = useNavigate();
-  const [selectedMethod, setSelectedMethod] = useState("bank");
+  // const [selectedMethod, setSelectedMethod] = useState("bank");
+
+  const location = useLocation();
+
+  const usdtActive = location.pathname === "/profile/wallet/deposit/usdt";
+  const localbankActive = location.pathname === "/profile/wallet/deposit/localbank";
+  const easypaisaActive = location.pathname === "/profile/wallet/deposit/easypaisa";
+  const jazzcashActive = location.pathname === "/profile/wallet/deposit/jazzcash";
+  const skrillActive = location.pathname === "/profile/wallet/deposit/skrill";
+  // const ethriumActive = location.pathname === "/profile/wallet/deposit/etherium";
+  // const creditcardActive = location.pathname === "/profile/wallet/deposit/creditcard";
+  // const binanceActive = location.pathname === "/profile/wallet/deposit/binance";
 
   const handleback = () => {
     navigate(-1);
   };
 
 
+
   return (
     <div className="lg:min-h-screen p-4 text-white flex flex-col lg:flex-row items-center justify-center">
-      <div className="w-full max-w-4xl border-2 border-gray-600  flex flex-col lg:flex-row overflow-hidden">
+      <div className="w-full max-w-4xl border-2 border-gray-600 flex flex-col lg:flex-row overflow-hidden">
         {/* Deposit Methods Column (hidden on mobile, shown as tabbar) */}
         <div className="hidden lg:block w-1/3 border-r border-gray-600">
           <div className="p-2 border-b border-gray-600">
-            <h2 className="text-xl font-bold ">Deposit</h2>
+            <h2 className="text-xl font-bold">Deposit</h2>
           </div>
 
           <div className="divide-y divide-gray-600">
             <div
-              className={`p-2 flex items-center cursor-pointer hover:bg-[#3C3C3C] ${selectedMethod === "usdt" ? "bg-[#1E1E1E]" : ""
+              className={`p-2 flex items-center cursor-pointer hover:bg-[#3C3C3C] ${usdtActive ? "bg-gray-700 text-white" : ""
                 }`}
-              onClick={() => setSelectedMethod("usdt")}
+              onClick={() => navigate("/profile/wallet/deposit/usdt")}
             >
               <img src={USDT} alt="aone" className="w-6 h-6 mr-3" />
-              <span>USDT</span>
+              <span>USDT TRC20</span>
             </div>
             <div
-              className={`p-2 flex items-center cursor-pointer hover:bg-[#3C3C3C] ${selectedMethod === "bank" ? "bg-[#1E1E1E]" : ""
+            
+              className={`p-2 flex items-center cursor-pointer hover:bg-[#3C3C3C] ${localbankActive ? "bg-gray-700 text-white" : ""
                 }`}
-              onClick={() => setSelectedMethod("bank")}
+              onClick={() => navigate("/profile/wallet/deposit/localbank")}
             >
               <img src={Localbank} alt="aone" className="w-6 h-6 mr-3" />
               <span>Local Bank Transfer</span>
+
             </div>
             <div
-              className={`p-2 flex items-center cursor-pointer hover:bg-[#3C3C3C] ${selectedMethod === "card" ? "bg-[#1E1E1E]" : ""
+              className={`p-2 flex items-center cursor-pointer hover:bg-[#3C3C3C] ${skrillActive ? "bg-gray-700 text-white" : ""
                 }`}
-              onClick={() => setSelectedMethod("card")}
+              onClick={() => navigate("/profile/wallet/deposit/skrill")}
+            >
+              <img src="https://avatars.mds.yandex.net/i?id=4b8079486bfabe6616d4d2a1f060d9887ce3d4b4-5239568-images-thumbs&n=13" alt="aone" className="w-6 h-6 mr-3" />
+              <span>Skrill</span>
+
+            </div>
+            <div
+              className={`p-2 flex items-center cursor-pointer hover:bg-[#3C3C3C] ${easypaisaActive ? "bg-gray-700 text-white" : ""
+                }`}
+              onClick={() => navigate("/profile/wallet/deposit/easypaisa")}
+            >
+              <img src={EasyPaisa} alt="aone" className="w-6 h-6 mr-3" />
+              <span>EasyPaisa</span>
+
+            </div>
+            <div
+              className={`p-2 flex items-center cursor-pointer hover:bg-[#3C3C3C] ${jazzcashActive ? "bg-gray-700 text-white" : ""
+                }`}
+              onClick={() => navigate("/profile/wallet/deposit/jazzcash")}
+            >
+              <img src={Jazzcash} alt="aone" className="w-6 h-6 mr-3" />
+              <span>JazzCash</span>
+
+            </div>
+
+            {/* <div
+              className={`p-2 flex items-center cursor-pointer hover:bg-[#3C3C3C] ${creditcardActive ? "bg-gray-700 text-white" : ""
+                }`}
+              onClick={() => navigate("/profile/wallet/deposit/creditcard")}
             >
               <img src={Creditcard} alt="aone" className="w-6 h-6 mr-3" />
               <span>Credit/Debit Card</span>
             </div>
             <div
-              className={`p-2 flex items-center cursor-pointer hover:bg-[#3C3C3C] ${selectedMethod === "crypto" ? "bg-[#1E1E1E]" : ""
+              className={`p-2 flex items-center cursor-pointer hover:bg-[#3C3C3C] ${binanceActive ? "bg-gray-700 text-white" : ""
                 }`}
-              onClick={() => setSelectedMethod("crypto")}
+              onClick={() => navigate("/profile/wallet/deposit/binance")}
             >
               <img src={Binance} alt="aone" className="w-6 h-6 mr-3" />
-
               <span>Crypto Payment</span>
             </div>
             <div
-              className={`p-2 flex items-center cursor-pointer hover:bg-[#3C3C3C] ${selectedMethod === "eth" ? "bg-[#1E1E1E]" : ""
+              className={`p-2 flex items-center cursor-pointer hover:bg-[#3C3C3C] ${ethriumActive ? "bg-gray-700 text-white" : ""
                 }`}
-              onClick={() => setSelectedMethod("eth")}
+              onClick={() => navigate("/profile/wallet/deposit/etherium")}
             >
               <img src={Ethrium} alt="aone" className="w-6 h-6 mr-3" />
               <span>Ethereum</span>
-            </div>
-
-            {/* <div
-              className={`p-2 flex items-center cursor-pointer hover:bg-[#3C3C3C] ${
-                selectedMethod === "ep" ? "bg-[#1E1E1E]" : ""
-              }`}
-              onClick={() => setSelectedMethod("ep")}
-            >
-              <img
-                src={EasyPaisa}
-                alt="easypaisa-logo"
-                className="w-6 h-6 mr-3"
-              />
-              <span>Easypaisa</span>
-            </div>
-           <div
-              className={`p-2 flex items-center cursor-pointer hover:bg-[#3C3C3C] ${
-                selectedMethod === "jz" ? "bg-[#1E1E1E]" : ""
-              }`}
-              onClick={() => setSelectedMethod("jz")}
-            >
-              <img
-                src={Jazzcash}
-                alt="jazzcash-logo"
-                className="w-6 h-6 mr-3"
-              />
-              <span>Jazzcash</span>
             </div> */}
 
           </div>
-
           <button
             onClick={handleback}
             className="bg-gray-700 hover:bg-gray-500 text-blue-400 px-4 py-2 mt-52 mx-1 rounded-lg transition"
@@ -120,97 +125,60 @@ const DepositPaymentmethod = () => {
             <span>The connection is secured</span>
           </div>
 
-          <h3 className="text-xl font-bold mb-4">
-            How to make a deposit using bank transfer
-          </h3>
-
-          <ol className="space-y-3 mb-6 text-gray-300">
-            <li>1. Click continue to view our beneficiary bank details</li>
-            <li>
-              2. Open your online banking in a new tab and initiate a transfer
-              using the provided credentials
-            </li>
-            <li>
-              3. Use ONLY the provided bank details. Aone is not responsible if
-              funds are sent to the wrong account
-            </li>
-          </ol>
-
-          <p className="text-sm text-gray-400 mb-4">
-            You may also complete the transfer via a local bank branch or ATM.
-          </p>
-
-          <div className="mb-4 text-sm text-gray-400">
-            <p>Average deposit processing time:</p>
-            <p className="text-white">2 hours (up to 3 working days)</p>
-          </div>
-
-          <Link to={"/profile/wallet/deposit/account"}>
-            <button className="w-full h-12 bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition">
-              Continue
-            </button>
-          </Link>
-
-          <div className="text-center text-sm text-gray-400 mt-2">
-            Your bank may apply an administrative fee. Aone commission fee - 0%
-          </div>
+          <main>
+            <Outlet />
+          </main>
         </div>
       </div>
 
       {/* Bottom Tab Bar for Mobile */}
       <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-[#1E1E1E] border-t border-[#3C3C3C] flex justify-around py-2 text-xs">
         <button
-          onClick={() => setSelectedMethod("usdt")}
-          className="flex flex-col items-center text-gray-300"
+          onClick={() => navigate("/profile/wallet/deposit/usdt")}
+          className={`flex flex-col items-center
+          
+          `}
         >
-          <IoLogoUsd className="w-6 h-6 mb-1" />
-          USDT
+           <img src={USDT} alt="aone" className="w-6 h-6 mb-1" />
+          USDT TRC20
         </button>
 
         <button
-          onClick={() => setSelectedMethod("bank")}
-          className="flex flex-col items-center text-blue-400"
+          onClick={() => navigate("/profile/wallet/deposit/localbank")}
+          className={`flex flex-col items-center 
+           
+          `}
         >
           <AiFillBank className="w-6 h-6 mb-1" />
           Bank
         </button>
         <button
-          onClick={() => setSelectedMethod("card")}
-          className="flex flex-col items-center text-gray-300"
+          onClick={() => navigate("/profile/wallet/deposit/skrill")}
+          className={`flex flex-col items-center 
+           
+          `}
         >
-          <BiSolidCreditCardAlt className="w-6 h-6 mb-1" />
-          Card
+             <img src="http://avatars.mds.yandex.net/i?id=4b8079486bfabe6616d4d2a1f060d9887ce3d4b4-5239568-images-thumbs&n=13" alt="aone" className="w-6 h-6 mb-1" />
+          Skrill
         </button>
         <button
-          onClick={() => setSelectedMethod("crypto")}
-          className="flex flex-col items-center text-gray-300"
+          onClick={() => navigate("/profile/wallet/deposit/jazzcash")}
+          className={`flex flex-col items-center 
+          
+          `}
         >
-          <RiSecurePaymentFill className="w-6 h-6 mb-1" />
-          BNB
+           <img src={Jazzcash} alt="aone" className="w-6 h-6 mb-1" />
+         JazzCash
         </button>
         <button
-          onClick={() => setSelectedMethod("eth")}
-          className="flex flex-col items-center text-gray-300"
+          onClick={() => navigate("/profile/wallet/deposit/easypaisa")}
+          className={`flex flex-col items-center 
+        
+          `}
         >
-          <FaEthereum className="w-6 h-6 mb-1" />
-          ETH
+          <img src={EasyPaisa} alt="aone" className="w-6 h-6 mb-1" />
+                Easypaisa
         </button>
-
-        {/* <button
-          onClick={() => setSelectedMethod("jz")}
-          className="flex flex-col items-center text-gray-300"
-        >
-          <img src={Jazzcash} className="w-6 h-6 mb-1" />
-          Jazzcash
-        </button>
-        <button
-          onClick={() => setSelectedMethod("ep")}
-          className="flex flex-col items-center text-gray-300"
-        >
-          <img src={EasyPaisa} className="w-6 h-6 mb-1" />
-          Easypaisa
-        </button> */}
-
       </div>
     </div>
   );

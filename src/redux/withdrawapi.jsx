@@ -5,7 +5,7 @@ export const withdrawapi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl:
       import.meta.env.MODE === "production"
-        ? "https://aonebackendd.vercel.app/api/"
+        ? "https://aone-app-backend-production.up.railway.app/api/"
         : "/api",
     credentials: "include",
   }),
@@ -13,15 +13,15 @@ export const withdrawapi = createApi({
 
   endpoints: (builder) => ({
     withdrawamount: builder.mutation({
-      query: ({ bank, currency, account, accountno, amount, user }) => ({
+      query: ({ bank, currency, account, accountno, amount, user,userEmail }) => ({
         method: "POST",
         url: "/withdraw/request",
-        body: { bank, currency, account, accountno, amount, user },
+        body: { bank, currency, account, accountno, amount, user,userEmail },
       }),
       invalidatesTags: ["requests"],
     }),
 
-    getwithdrawreq: builder.query({
+    withdrawalrequests: builder.query({
       query: () => "/withdraw/getrequests",
       providesTags: ["requests"],
     }),
@@ -31,5 +31,5 @@ export const withdrawapi = createApi({
 // Destructure hooks
 export const {
   useWithdrawamountMutation,
-  useGetwithdrawreqQuery,
+  useWithdrawalrequestsQuery
 } = withdrawapi;

@@ -4,8 +4,12 @@ import { AiOutlineUsergroupAdd, AiTwotoneFund } from "react-icons/ai";
 import { BiMoneyWithdraw } from "react-icons/bi";
 import { FaMoneyBillTransfer } from "react-icons/fa6";
 import { Link } from "react-router-dom";
-import { useDisplaynamedataMutation } from "../redux/p.detailapi";
+// import {   useDisplaynamedataQuery } from "../redux/p.detailapi";
 import { useDisplaybalanceMutation, useDisplayloginIdMutation } from "../redux/Depositmoney";
+
+import CryptoJS from "crypto-js";
+import { useDisplaynameMutation } from "../redux/p.detailapi";
+const secretKey = "aone-junaid";
 
 const buttonData = [
   {
@@ -32,32 +36,40 @@ const buttonData = [
 
 export default function Home() {
 
-  const [names, setName] = useState([])
   const [balance, setBalance] = useState([])
   const [loginId, setLoginId] = useState([])
-
-  const [displaynamedata] = useDisplaynamedataMutation()
+  const [names,setName]=useState([])
+  const [displayname] = useDisplaynameMutation()
   const [displaybalance] = useDisplaybalanceMutation()
   const [displayloginId] = useDisplayloginIdMutation()
 
-  const userdetail = JSON.parse(localStorage.getItem("user"))
-  const userId = userdetail._id || ""
+  // const userdetail = JSON.parse(localStorage.getItem("user"))
+  // const userId = userdetail._id || ""
+
+  const encryptedUser = localStorage.getItem("user");
+  const decryptedUser = JSON.parse(
+    CryptoJS.AES.decrypt(encryptedUser, secretKey).toString(CryptoJS.enc.Utf8)
+  );
+
+  const complete_profile = decryptedUser?.complete_profile;
+  const userId = decryptedUser._id || "";
 
   useEffect(() => {
     const handledisplayname = async () => {
       try {
         if (!userId) return
-        var result = await displaynamedata({ user: userId }).unwrap()
+        var result = await displayname({user:userId}).unwrap()
+      
+        const names =  result?.name
 
-        const extractednames = result?.data?.map(item => item.name);
-        setName(extractednames || [])
+        setName(names || [])
 
       } catch (error) {
         console.log(error)
       }
     }
     handledisplayname()
-  }, [displaynamedata, userId])
+  }, [displayname, userId])
 
 
   useEffect(() => {
@@ -91,9 +103,8 @@ export default function Home() {
     }
     handledisplayL_id()
   }, [displayloginId, userId])
-
   return (
-    <div className="w-full px-4 sm:px-6 md:px-8 max-w-7xl mx-auto ">
+    <div className="w-full px-4 sm:px-6 md:px-8 max-w-7xl mx-auto min-h-screen">
       {/* Top Notification Banner */}
       <div className="bg-[#23282B] border-2 border-gray-600 text-white p-4 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between rounded-xl mb-6 gap-4">
         <div className="flex items-start sm:items-center gap-3">
@@ -107,13 +118,18 @@ export default function Home() {
             </p>
           </div>
         </div>
-        <Link to="/profile/personalDetail">
-          <button
-            className='text-base bg-Blue hover:bg-blue-600 text-white px-4 py-2 rounded flex items-center transition-all'>
 
-            Complete profile <ChevronRight className="ml-2 w-5" />
-          </button>
-        </Link>
+
+
+        {complete_profile === 0 && (
+          <Link to="/profile/personalDetail" className="block">
+            <button className="text-base bg-Blue hover:bg-blue-600 text-white px-4 py-2 rounded flex items-center transition-all">
+              Complete profile <ChevronRight className="ml-2 w-5" />
+            </button>
+          </Link>
+        )}
+
+
       </div>
 
       {/* Partner Invite Banner */}
@@ -154,12 +170,9 @@ export default function Home() {
             </div>
             <div className="font-bold text-lg text-white">W05175554USD</div>
 
-
-            {names?.map((name, index) => (
-              <div key={index} className="text-white p-2">
-                <td className="px-2 text-xl font-medium">{name}</td>
-              </div>
-            ))}
+            <div className="text-white p-2">
+              <td className="px-2 text-xl font-medium text-white">{names}</td>
+            </div>
 
 
           </div>
@@ -175,7 +188,7 @@ export default function Home() {
               ))}
 
               <div className="text-3xl font-bold text-white">{balance} USD</div>
-              
+
 
             </div>
           </div>

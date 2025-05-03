@@ -53,13 +53,38 @@ export default function DashboardLayout() {
   const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
 
   const [logout, { isLoading }] = useLogoutMutation();
+  // const navigate = useNavigate();
+  // const location = useLocation();
+
+  // // useEffect(() => {
+  // //   const authToken = localStorage.getItem("auth token");
+
+  // //   if (!authToken) {
+  // //     navigate("/");
+  // //   }
+  // // }, [navigate]);
+
+
+  // const handleLogout = async () => {
+  //   try {
+  //     const response = await logout().unwrap();
+  //     localStorage.removeItem("auth token");
+  //     localStorage.removeItem("userId");
+  //     navigate("/");
+  //   } catch (error) {
+  //     console.error("Failed to logout:", error);
+  //   }
+  // };
+
+
   const navigate = useNavigate();
   const location = useLocation();
 
   useEffect(() => {
     const authToken = localStorage.getItem("auth token");
+    const userToken = localStorage.getItem("user");
 
-    if (!authToken) {
+    if (!authToken || !userToken) {
       navigate("/");
     }
   }, [navigate]);
@@ -68,13 +93,14 @@ export default function DashboardLayout() {
     try {
       const response = await logout().unwrap();
       localStorage.removeItem("auth token");
-      localStorage.removeItem("userId");
+      localStorage.removeItem("user");
       navigate("/");
     } catch (error) {
       console.error("Failed to logout:", error);
     }
-  };
 
+  
+  }
   return (
     <div className="flex bg-[#23282B] ">
       <div

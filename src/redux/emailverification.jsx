@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 const baseQuery = fetchBaseQuery({
   baseUrl:
     import.meta.env.MODE === "production"
-      ? "https://aonebackendd.vercel.app/api/verify"
+      ? "https://aone-app-backend-production.up.railway.app/api/verify"
       : "/api/verify",
   credentials: "include",
 });
@@ -11,27 +11,41 @@ const baseQuery = fetchBaseQuery({
 export const emailapi = createApi({
   reducerPath: "emailapi",
   baseQuery,
-  tagTypes: ["code"], // Defined tag types properly
+  tagTypes: ["code"],
   endpoints: (builder) => ({
-    // User Registration
+    // Send Email Verification Code
     sendCode: builder.mutation({
       query: ({ email }) => ({
-        method: "POST",
         url: "/send-code",
+        method: "POST",
         body: { email },
       }),
       invalidatesTags: ["code"],
     }),
 
-    // User Login
-    verifyCode: builder.mutation({
-      query: ({ code }) => ({
+    // Send Phone Verification Code
+    sendPhoneCode: builder.mutation({
+      query: (formData) => ({
+        url: "/sms-send-code",
         method: "POST",
+        body: formData,
+      }),
+      invalidatesTags: ["code"],
+    }),
+
+    // Verify Code (Phone or Email)
+    verifyCode: builder.mutation({
+      query: (requestData) => ({
         url: "/verify-code",
-        body: { code },
+        method: "POST",
+        body: requestData,
       }),
     }),
   }),
 });
 
-export const { useSendCodeMutation, useVerifyCodeMutation } = emailapi;
+export const {
+  useSendCodeMutation,
+  useSendPhoneCodeMutation,
+  useVerifyCodeMutation,
+} = emailapi;
