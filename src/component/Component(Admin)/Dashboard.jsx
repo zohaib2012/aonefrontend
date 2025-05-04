@@ -66,7 +66,7 @@ const Dashboard = () => {
 
 
         {/* Sidebar */}
-        <div className="  bg-[#2C3235]   border-r border-[#3C3C3C]">
+        <div className=" bg-[#2C3235]   border-r border-[#3C3C3C]">
 
           <div className="space-y-6 p w-52 y-4 p-2 ">
             {/* Sidebar Menu Items */}
