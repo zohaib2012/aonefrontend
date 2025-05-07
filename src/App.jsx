@@ -68,8 +68,11 @@ import Withdrawalskrillaccount from "./component/Component(Admin)/depositpayment
 import Withdrawalusdtaccount from "./component/Component(Admin)/depositpaymentaccounts/Withdrawalusdtaccount";
 import { Withdrawalrequests } from "./component/admin_pannel/Withdrawalrequests";
 
+// import PhoneVerification from "./component/Component(Admin)/Phoneverification";
+// import SmsVerification from "./component/Component(Admin)/SmsVerification";
 
-
+import PhoneVerification from "./component/Component(Admin)/Phoneverification"
+import SmsVerification from "./component/Component(Admin)/SmsVerification"
 const App = () => {
   return (
     <div>
@@ -116,6 +119,11 @@ const App = () => {
               <Route path="personalDetail" element={<PersonalDetailsForm />} />
               <Route path="email/verification" element={<Emailverification />}  />
               <Route path="code/verification" element={<CodeVerification />} />
+
+
+              <Route path="sms" element={<PhoneVerification />} />
+              <Route path="sms/verification" element={<SmsVerification />} />
+
               <Route path="uploaddocunment" element={<Uploaddocunment />} />
               <Route path="verifyresidence" element={<VerifyResidence />} />
               <Route path="contactDetail" element={<ContactDetail />} />

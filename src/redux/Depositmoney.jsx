@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 const baseQuery = fetchBaseQuery({
   baseUrl:
     import.meta.env.MODE === "production"
-      ? "https://aone-app-backend-production.up.railway.app/api/"
+      ? "https://asharbackend-production-039d.up.railway.app/api/"
       : "/api",
   credentials: "include",
 });

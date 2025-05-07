@@ -10,6 +10,7 @@ const secretKey = "aone-junaid";
 const EmailVerification = () => {
   const location = useLocation();
   const personalDetailData = location.state;
+  console.log("personaldata======", personalDetailData);
   const [sendCode, { isError, isLoading, error, isSuccess }] =
     useSendCodeMutation();
   const encryptedUser = localStorage.getItem("user");
@@ -94,11 +95,10 @@ const EmailVerification = () => {
         <div className="px-4 w-full pb-4 flex justify-center">
           <button
             type="submit"
-            className={`${
-              isLoading
-                ? "bg-gray-500  w-full  text-white p-3 rounded hover:bg-gray-700 transition duration-300"
-                : "w-full bg-gray-600 text-white p-3 rounded hover:bg-gray-700 transition duration-300"
-            }`}
+            className={`${isLoading
+              ? "bg-gray-500  w-full  text-white p-3 rounded hover:bg-gray-700 transition duration-300"
+              : "w-full bg-gray-600 text-white p-3 rounded hover:bg-gray-700 transition duration-300"
+              }`}
             disabled={isLoading}
           >
             {isLoading ? "Submitting" : "Submit"}

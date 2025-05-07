@@ -21,3 +21,18 @@ body {
 .custom-blue {
   background-color: rgba(0, 86, 255, 0.3);
 }
+
+
+
+.custom-tel-input {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background-color: #1e1e1e !important;
+  color: white !important;
+}
+.custom-tel-input:focus {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
